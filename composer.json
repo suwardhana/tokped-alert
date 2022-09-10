@@ -1,0 +1,13 @@
+{
+    "name": "suwardhana/tokped_alert",
+    "authors": [
+        {
+            "name": "suwardhana",
+            "email": "suwar_dhana@yahoo.co.id"
+        }
+    ],
+    "require": {
+        "telegram-bot/api": "^2.3",
+        "vlucas/phpdotenv": "^5.4"
+    }
+}
