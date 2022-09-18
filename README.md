@@ -1,6 +1,6 @@
 # Tokped-Alert
 
-tokped-alert is php library to get notification when product price is lower than your price.
+tokped-alert is php script to get notification when product price is lower than your price.
 
 ## Installation
 
