@@ -14,11 +14,13 @@ $products = [
     'keyword' => '12700f box',
     'price_target' => 4700000,
     'price_min' => 3900000,
+    'exclude' => 'tray'
   ],
   [
     'keyword' => 'amd 5900x box',
     'price_target' => 5850000,
     'price_min' => 4900000,
+    'exclude' => 'tray'
   ],
 ];
 
@@ -73,8 +75,10 @@ foreach ($products as $key => $product) {
   $response = curl_exec($curl);
   $response_array = json_decode($response, true);
   $first_product = $response_array[0]["data"]["ace_search_product_v4"]["data"]["products"][0];
+  $first_product_name = $first_product["name"];
   $first_product_price = str_replace("Rp", "", str_replace(".", "", $first_product["price"]));
-  if ($first_product_price < $product['price_target']) {
+
+  if (($first_product_price < $product['price_target']) && (strpos(strtolower($first_product_name), strtolower($product['exclude'])) === false)) {
     $bot->sendMessage($id, "Harga Produk {$product['keyword']} Turun\nHarga Sekarang : " . $first_product["price"]);
     $bot->sendMessage($id, "Link : " . $first_product["url"]);
   }
